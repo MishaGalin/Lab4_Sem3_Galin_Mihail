@@ -6,8 +6,7 @@ namespace Lab3_Sem3_Galin_Mihail
 {
     public partial class Form1 : Form, IController
     {
-        private static Random r = new Random();
-        private List<IView> views = new List<IView>();
+        private static readonly Random r = new Random();
         private IModel model;
 
         public Form1()
@@ -32,34 +31,19 @@ namespace Lab3_Sem3_Galin_Mihail
                 Model = model
             };
             AddView(labView);
-
-            foreach (IView v in views) v.UpdateView();
         }
 
         public IModel Model { get => model; set => model = value; }
 
         public void Add() => model.AddNode(r.Next(100));
 
-        public void AddView(IView v)
-        {
-            views.Add(v);
-        }
+        public void AddView(IView v) => model.Changed += new Action(v.UpdateView);
 
         public void Remove()
-        {
-            if (model.Count > 0) model.RemoveLastNode();
-        }
+        { if (model.Count > 0) model.RemoveLastNode(); }
 
-        private void AddButton_Click(object sender, EventArgs e)
-        {
-            Add();
-            foreach (IView v in views) v.UpdateView();
-        }
+        private void AddButton_Click(object sender, EventArgs e) => Add();
 
-        private void RemoveButton_Click(object sender, EventArgs e)
-        {
-            Remove();
-            foreach (IView v in views) v.UpdateView();
-        }
+        private void RemoveButton_Click(object sender, EventArgs e) => Remove();
     }
 }
