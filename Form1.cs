@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Lab3_Sem3_Galin_Mihail
@@ -14,16 +8,31 @@ namespace Lab3_Sem3_Galin_Mihail
     {
         private static Random r = new Random();
         private List<IView> views = new List<IView>();
-        public IModel model;
+        private IModel model;
 
         public Form1()
         {
             InitializeComponent();
-
-            IView labView = new LabelView(label1);
             model = new MyModel();
-            labView.Model = model;
+
+            MyDataGrid dataGridView1 = new MyDataGrid()
+            {
+                Model = model
+            };
+            AddView(dataGridView1);
+
+            PanelView panel1 = new PanelView
+            {
+                Model = model
+            };
+            AddView(panel1);
+
+            IView labView = new LabelView(label1)
+            {
+                Model = model
+            };
             AddView(labView);
+
             foreach (IView v in views) v.UpdateView();
         }
 

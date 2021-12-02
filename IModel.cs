@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Lab3_Sem3_Galin_Mihail
 {
     public interface IModel
     {
+        IEnumerable<Node> AllNodes { get; }
+
+        int Count { get; }
+
         void AddNode(int value);
 
         void RemoveLastNode();
-
-        int Count { get; }
     }
 }

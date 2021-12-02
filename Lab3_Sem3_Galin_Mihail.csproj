@@ -56,8 +56,14 @@
     <Compile Include="IModel.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="LabelView.cs" />
+    <Compile Include="MyDataGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MyModel.cs" />
     <Compile Include="Node.cs" />
+    <Compile Include="PanelView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
