@@ -19,6 +19,11 @@ namespace Lab3_Sem3_Galin_Mihail
         public Form1()
         {
             InitializeComponent();
+
+            IView labView = new LabelView(label1);
+            model = new MyModel();
+            labView.Model = model;
+            AddView(labView);
         }
 
         public IModel Model { get => model; set => model = value; }
@@ -28,5 +33,15 @@ namespace Lab3_Sem3_Galin_Mihail
         public void AddView(IView v) => views.Add(v);
 
         public void Remove() => model.RemoveLastNode();
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            Add();
+        }
+
+        private void RemoveButton_Click(object sender, EventArgs e)
+        {
+            Remove();
+        }
     }
 }
