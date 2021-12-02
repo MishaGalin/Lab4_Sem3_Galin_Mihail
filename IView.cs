@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab3_Sem3_Galin_Mihail
 {
-    internal interface IView
+    public interface IView
     {
         IModel Model { get; set; }
 

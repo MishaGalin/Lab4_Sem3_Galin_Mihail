@@ -10,11 +10,23 @@ using System.Windows.Forms;
 
 namespace Lab3_Sem3_Galin_Mihail
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, IController
     {
+        private static Random r = new Random();
+        private List<IView> views = new List<IView>();
+        public IModel model;
+
         public Form1()
         {
             InitializeComponent();
         }
+
+        public IModel Model { get => model; set => model = value; }
+
+        public void Add() => model.AddNode(r.Next(100));
+
+        public void AddView(IView v) => views.Add(v);
+
+        public void Remove() => model.RemoveLastNode();
     }
 }

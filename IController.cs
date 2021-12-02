@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab3_Sem3_Galin_Mihail
 {
-    internal interface IController
+    public interface IController
     {
         IModel Model { get; set; }
 

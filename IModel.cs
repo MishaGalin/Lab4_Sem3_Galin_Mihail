@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab3_Sem3_Galin_Mihail
 {
-    internal interface IModel
+    public interface IModel
     {
         void AddNode(int value);
 
