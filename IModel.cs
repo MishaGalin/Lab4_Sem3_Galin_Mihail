@@ -14,5 +14,7 @@ namespace Lab3_Sem3_Galin_Mihail
         void AddNode(int value);
 
         void RemoveLastNode();
+
+        void ColorNodes(int x, int y);
     }
 }

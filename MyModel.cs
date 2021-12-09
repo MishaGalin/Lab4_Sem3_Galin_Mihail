@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace Lab3_Sem3_Galin_Mihail
 {
@@ -16,6 +17,15 @@ namespace Lab3_Sem3_Galin_Mihail
         public void AddNode(int value)
         {
             nodes.AddFirst(new Node(value, r.Next(10), r.Next(10)));
+            Changed?.Invoke();
+        }
+
+        public void ColorNodes(int x, int y)
+        {
+            foreach (var node in nodes)
+            {
+                if (node.Y == y) node.Color = Pens.Blue;
+            };
             Changed?.Invoke();
         }
 

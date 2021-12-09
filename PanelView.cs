@@ -20,7 +20,7 @@ namespace Lab3_Sem3_Galin_Mihail
             Graphics g = e.Graphics;
             foreach (Node n in Model.AllNodes)
             {
-                g.DrawEllipse(Pens.Red, n.X * 20, n.Y * 20, 20, 20);
+                g.DrawEllipse(n.Color, n.X * 20, n.Y * 20, 20, 20);
             }
         }
     }

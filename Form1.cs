@@ -14,23 +14,24 @@ namespace Lab3_Sem3_Galin_Mihail
             InitializeComponent();
             model = new MyModel();
 
-            MyDataGrid dataGridView1 = new MyDataGrid()
-            {
-                Model = model
-            };
-            AddView(dataGridView1);
-
-            PanelView panel1 = new PanelView
-            {
-                Model = model
-            };
-            AddView(panel1);
-
             IView labView = new LabelView(label1)
             {
                 Model = model
             };
+
+            dataGridView1.ClickedXY += DataGridView1_ClickedXY;
+
+            dataGridView1.Model = model;
+            panel1.Model = model;
+
             AddView(labView);
+            AddView(dataGridView1);
+            AddView(panel1);
+        }
+
+        private void DataGridView1_ClickedXY(int x, int y)
+        {
+            model.ColorNodes(x, y);
         }
 
         public IModel Model { get => model; set => model = value; }
@@ -45,5 +46,10 @@ namespace Lab3_Sem3_Galin_Mihail
         private void AddButton_Click(object sender, EventArgs e) => Add();
 
         private void RemoveButton_Click(object sender, EventArgs e) => Remove();
+
+        private void DataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridView1_ClickedXY(e.X, (int)dataGridView1.Rows[e.RowIndex].Cells[1].Value);
+        }
     }
 }
