@@ -8,15 +8,17 @@ namespace Lab3_Sem3_Galin_Mihail
     {
         private static Random r = new Random();
         private LinkedList<Node> nodes = new LinkedList<Node>();
+        private MyLinkedList list = new MyLinkedList();
 
         public IEnumerable<Node> AllNodes => nodes;
         public int Count => nodes.Count;
 
         public event Action Changed;
 
-        public void AddNode(int value)
+        public void AddNode()
         {
-            nodes.AddFirst(new Node(value, r.Next(10), r.Next(10)));
+            nodes.AddFirst(new Node(r.Next(10), r.Next(10)));
+            if (Changed != null) Changed();
             Changed?.Invoke();
         }
 

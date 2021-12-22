@@ -11,7 +11,7 @@ namespace Lab3_Sem3_Galin_Mihail
 
         int Count { get; }
 
-        void AddNode(int value);
+        void AddNode();
 
         void RemoveLastNode();
 

@@ -20,7 +20,6 @@ namespace Lab3_Sem3_Galin_Mihail
             };
 
             dataGridView1.ClickedXY += DataGridView1_ClickedXY;
-
             dataGridView1.Model = model;
             panel1.Model = model;
 
@@ -36,20 +35,20 @@ namespace Lab3_Sem3_Galin_Mihail
 
         public IModel Model { get => model; set => model = value; }
 
-        public void Add() => model.AddNode(r.Next(100));
+        public void Add() => model.AddNode();
 
         public void AddView(IView v) => model.Changed += new Action(v.UpdateView);
 
         public void Remove()
-        { if (model.Count > 0) model.RemoveLastNode(); }
+        {
+            if (model.Count > 0) model.RemoveLastNode();
+        }
 
         private void AddButton_Click(object sender, EventArgs e) => Add();
 
         private void RemoveButton_Click(object sender, EventArgs e) => Remove();
 
         private void DataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            DataGridView1_ClickedXY(e.X, (int)dataGridView1.Rows[e.RowIndex].Cells[1].Value);
-        }
+            => DataGridView1_ClickedXY(e.X, (int)dataGridView1.Rows[e.RowIndex].Cells[1].Value);
     }
 }
